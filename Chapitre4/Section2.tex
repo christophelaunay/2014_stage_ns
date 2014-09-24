@@ -1,0 +1,53 @@
+\section{Traitement des images et création de nos matrices}
+
+Ici vous sera expliqué comment les données ont été traités informatiquement pour la suite de notre projet.
+Plusieurs hypothèses ont été évaluées : 
+\begin{enumerate}
+	\item les images initiales et une matrice avec le sexe et l'age auquel l'image a été prise l'IRM sans intercept.
+	\item les images initiales avec une matrice au mêmes covariables avec l'intercept. 
+	\item ces deux hypothèses mais avec des images squeletonisées.
+	\item Les images de bases avec une covariable en plus : les sites ont été prises les IRM ainsi que l'intercept. 
+	\item un masque tronqué d'une partie du cerveau afin de focaliser notre analyse sur des régions précises du cerveau.  
+\end{enumerate}
+
+\subsection{présentation des images}
+
+A chaque sujet correspond une image de dimension (182, 218, 182). Ce sont donc des images 3D qui sont regroupés en un seul volume. Le fichier image correspond donc a un volume 4D qui correspond aux dimensions d'une image plus le nombre de sujet.
+
+\todo{inclure des images d'une imagerie de diffusion + skeletonised}
+\todo{expliquer le but du masque dans le cas du traitement des images}
+\subsection{Création du masque}
+
+Chaque image fais environ deux millions de voxels (pixel du cerveau). Nous allons appliquer un masque afin de réduire le nombre de voxel et ainsi focaliser notre analyse sur une plus petite partie du cerveau. Cela nous permettra d'éliminer une grande partie des voxels qui ne nous intéressent pas. 
+Ce masque sera fait selon les images de base avec un certain seuil suivi d'un paufinage basé sur un atlas qui va nous permettre de sélectionner des régions du cerveau qui ne sont pas révélateurs dans notre cas. (voir figure 2)
+
+Dans le cas du masque tronqué, nous suivons les étapes du dessus, suivi d'élimination des zones du cerveau que nous ne voulons pas.
+
+Dans le cas des images skeletonisés, nous créons le masque sur la base de ces images. 
+
+\todo{inclure des images du masque, troncés et skeletonised}
+
+\subsection{Application du masque}
+
+Chaque image 3D sera transformé en un vecteur ligne. Celui-ci, que nous appellerons \textit{vecteur d'image} se verra appliqué le masque crée plutôt après avoir été transformé en vecteur ligne. Ainsi, nous obtenons une matrice X de vecteur ou chaque ligne correspond un sujet et le nombre de colonne aux voxels.
+Cette matrice sera ensuite centrée et réduite afin d'être normalisé. 
+Cette démarche est commune a toutes les hypothèses. 
+
+\subsection{Ajout des covariables}
+
+Suite à la création de cette matrice, nous y ajoutons des colonnes de covariables. Ces variables sont des données cliniques qui ne seront pas pénalisés lors du calcul de prédiction. Les covariables sont le sexe des sujets et leur âge à auquel a été pris l'image. 
+L'âge sera centrée et réduit mais pas le sexe qui sera codé en binaire (1, -1) ou le 1 correspond aux femmes et -1 les femmes. 
+Ces deux colonnes sont ensuite ajoutées a la matrice X. 
+
+Dans le cas de l'hypothèse 2, une colonne de 1 a été ajouté au tout début de la matrice.Il s'agit de la matrice d'intercept qui va diminuer l'effet de biais(équilibrage de la classification des sujets).
+
+Dans le cas de l'hypothèse 3, une covariable va être ajouté, celle des sites auxquelles a été prises l'IRM. Il s'agit de \textit{Dummy Coding}, c'est à dire transformé une colonne contenant plusieurs informations qualitatives en n colonnes, une pour chaque valeur différente. 
+
+Une autre matrice est crée, celle des Y qui correspond a l'état clinique des sujets (sain ou malade). Cette matrice est commune a toutes les hypothèses. 
+
+Ces deux matrices seront enregistrées dans deux fichiers différents et seront utilisés lors du calcul d'apprentissage et de prédiction.
+
+
+Suite cela, nous lançons les calculs de prédiction sur un cluster. 
+
+

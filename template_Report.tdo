@@ -1,0 +1,10 @@
+\contentsline {todo}{{expliquer l'apprentissage des k voxels}}{8}{section*.4}
+\contentsline {todo}{{expliquer le but du choix de ce modele ci ( voir classif envoy\IeC {\'e} par DOUDOU)}}{9}{section*.7}
+\contentsline {todo}{{Expliquer aussi la p\IeC {\'e}nalit\IeC {\'e} ds la r\IeC {\'e}gression lin\IeC {\'e}aire}}{9}{section*.8}
+\contentsline {todo}{{inclure un petit sch\IeC {\'e}ma concernant le pr\IeC {\'e}traitement des donn\IeC {\'e}es}}{12}{section*.11}
+\contentsline {todo}{{inclure des images d'une imagerie de diffusion + skeletonised}}{13}{section*.12}
+\contentsline {todo}{{expliquer le but du masque dans le cas du traitement des images}}{13}{section*.13}
+\contentsline {todo}{{inclure des images du masque, tronc\IeC {\'e}s et skeletonised}}{14}{section*.14}
+\contentsline {todo}{{expliquer l'ordre dans lequel sont effecu\IeC {\'e}s les diff\IeC {\'e}rentes \IeC {\'e}tapes du calcul de pr\IeC {\'e}diction (sh\IeC {\'e}ma maybe?)}}{15}{section*.15}
+\contentsline {todo}{{Pr\IeC {\'e}sentation des r\IeC {\'e}sultats}}{16}{section*.17}
+\contentsline {todo}{{expliquer la sensibilit\IeC {\'e}, la sp\IeC {\'e}cificit\IeC {\'e}, la ROC curve, et ce que l'on voudrait obtenir, }}{16}{section*.18}

@@ -1,0 +1,22 @@
+\section{Le calcul de prédiction}
+
+\todo{expliquer l'ordre dans lequel sont effecués les différentes étapes du calcul de prédiction (shéma maybe?)}
+
+\subsubsection{Sensibilité et spécificité: explication}
+
+Au dessus, on a mentionné la sensibilité et la spécificité. mots d'une grande importance qui doivent être explicité afin de bien comprendre les résultats qui vous seront présenté aprés. 
+Ces termes vient d'une technique d'analyse statistique : \textit{Receiver Operating Characteristic curve}. Cette technique  permet de classé des résultats binaires (0 ou 1) en quatre groupes sous-jacent : 
+\begin{itemize}
+	\item vrai positif
+	\item faux positif
+	\item vrai négatif
+	\item faux négatif
+\end{itemize}
+
+Il s'agit donc de classer des résultats entre 0 ou 1 en comparant les scores obtenus avec les vrais. Ceci forme une courbe (voir figure X) qui représente la valeur de seuil selon la spécificité et la sensibilité. 
+Ces termes ont pour historique la détection sur des radars. Les radars sont dis sensibles si ils détectent correctement les événements importants parmi les événements qu'il a détecté. En revanche, un radar est spécifique si il ne détecte que des événements importants même si il n'en détecte pas beaucoup.  
+Dans notre cas, nous nous dirons sensibles si parmi tous les sujets classés malades, tous le sont, au contraire, nous serons spécifiques si nous avons classés peu de sujet malade mais ceux qui sont classés sont vraiment malade.
+La sensibilité correspond donc au taux de vrais positifs bien classés alors que la spécificité correspond au taux de vrais négatifs bien classés.  
+
+
+Maintenant que nous savons comment sont effectués les calculs et notre classification, passons maintenant a l'analyse de nos résultats. 

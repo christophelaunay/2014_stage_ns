@@ -1,0 +1,14 @@
+\section{Présentation du projet}
+
+
+Le projet consiste à étudier une population de 200 sujets, une partie est atteinte de trouble bipolaire, l'autre est constitué de témoins. Le but étant d'apprendre a la machine à reconnaitre les sujets bipolaires des sains. 
+Le principe est de créer deux groupes de cette populations, un qui servira pour l'apprentissage de la machine, et l'autre de test (voir figure 1, a).
+Elle apprendra une carte des poids des voxels (les pixels de l'image IRM) selon le score (si oui ou non le sujet étudié est bipolaire) ainsi que des hyperplans de prédictions qui correspondent aux coordonnées dans l'espace des voxels de poids les plus forts (voir figure 1, b).
+grâce a cet apprentissage, la machine calculera sur l'échantillon de test un score de prédiction qui sera comparé aux vraies résultats cliniques des sujets (voir figure 1, c, d).
+Le sujet porte donc sur une classification des voxels. Pour celle-ci, un vecteur de poids via une régression logistique sera calculé qui va servir ensuite pour les prédictions afin de classés nos résultats grâce à une validation croisée.
+
+Ainsi, nous avons le plan d'ensemble du projet, procédons maintenant par étape en commençant par présenter le cahier des charges.
+
+ 
+
+ 

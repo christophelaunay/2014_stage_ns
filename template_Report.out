@@ -1,0 +1,25 @@
+\BOOKMARK [0][-]{chapter.1}{L'entreprise Neurospin et son environnement}{}
+\BOOKMARK [1][-]{section.1.1}{Neuropsin}{chapter.1}
+\BOOKMARK [1][-]{section.1.2}{La hi\351rarchie}{chapter.1}
+\BOOKMARK [0][-]{chapter.2}{Le projet}{}
+\BOOKMARK [1][-]{section.2.1}{Les troubles bipolaires : explication}{chapter.2}
+\BOOKMARK [1][-]{section.2.2}{DWI : diffusion Weighted Imaging}{chapter.2}
+\BOOKMARK [1][-]{section.2.3}{Pr\351sentation du projet}{chapter.2}
+\BOOKMARK [1][-]{section.2.4}{Le cahier des charges}{chapter.2}
+\BOOKMARK [0][-]{chapter.3}{M\351thodes}{}
+\BOOKMARK [1][-]{section.3.1}{Algorithme d'apprentissage}{chapter.3}
+\BOOKMARK [1][-]{section.3.2}{Estimateur}{chapter.3}
+\BOOKMARK [1][-]{section.3.3}{Validation Crois\351e}{chapter.3}
+\BOOKMARK [1][-]{section.3.4}{MapReduce}{chapter.3}
+\BOOKMARK [0][-]{chapter.4}{La mise en \234uvre}{}
+\BOOKMARK [1][-]{section.4.1}{Les sujets}{chapter.4}
+\BOOKMARK [2][-]{subsection.4.1.1}{Le choix des participants}{section.4.1}
+\BOOKMARK [2][-]{subsection.4.1.2}{L'acquisition de donn\351e}{section.4.1}
+\BOOKMARK [2][-]{subsection.4.1.3}{L'initialisation de la population}{section.4.1}
+\BOOKMARK [1][-]{section.4.2}{Traitement des images et cr\351ation de nos matrices}{chapter.4}
+\BOOKMARK [2][-]{subsection.4.2.1}{pr\351sentation des images}{section.4.2}
+\BOOKMARK [2][-]{subsection.4.2.2}{Cr\351ation du masque}{section.4.2}
+\BOOKMARK [2][-]{subsection.4.2.3}{Application du masque}{section.4.2}
+\BOOKMARK [2][-]{subsection.4.2.4}{Ajout des covariables}{section.4.2}
+\BOOKMARK [1][-]{section.4.3}{Le calcul de pr\351diction}{chapter.4}
+\BOOKMARK [0][-]{chapter.5}{chapitre\1375}{}

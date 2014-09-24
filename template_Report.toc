@@ -1,0 +1,31 @@
+\select@language {french}
+\contentsline {chapter}{\numberline {1}L'entreprise Neurospin et son environnement}{4}{chapter.1}
+\contentsline {section}{\numberline {1.1}Neuropsin}{4}{section.1.1}
+\contentsline {section}{\numberline {1.2}La hi\IeC {\'e}rarchie}{4}{section.1.2}
+\contentsline {chapter}{\numberline {2}Le projet}{5}{chapter.2}
+\contentsline {section}{\numberline {2.1}Les troubles bipolaires : explication}{5}{section.2.1}
+\contentsline {section}{\numberline {2.2}DWI : diffusion Weighted Imaging}{5}{section.2.2}
+\contentsline {section}{\numberline {2.3}Pr\IeC {\'e}sentation du projet}{5}{section.2.3}
+\contentsline {section}{\numberline {2.4}Le cahier des charges}{6}{section.2.4}
+\contentsline {chapter}{\numberline {3}M\IeC {\'e}thodes}{7}{chapter.3}
+\contentsline {section}{\numberline {3.1}Algorithme d'apprentissage}{7}{section.3.1}
+\contentsline {section}{\numberline {3.2}Estimateur}{8}{section.3.2}
+\contentsline {subsubsection}{R\IeC {\'e}gression Lin\IeC {\'e}aire}{8}{section*.5}
+\contentsline {subsubsection}{R\IeC {\'e}gression Logistique}{9}{section*.6}
+\contentsline {section}{\numberline {3.3}Validation Crois\IeC {\'e}e}{9}{section.3.3}
+\contentsline {section}{\numberline {3.4}MapReduce}{10}{section.3.4}
+\contentsline {subsubsection}{Map}{10}{section*.9}
+\contentsline {subsubsection}{Reduce}{10}{section*.10}
+\contentsline {chapter}{\numberline {4}La mise en \IeC {\oe }uvre}{12}{chapter.4}
+\contentsline {section}{\numberline {4.1}Les sujets}{12}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}Le choix des participants}{12}{subsection.4.1.1}
+\contentsline {subsection}{\numberline {4.1.2}L'acquisition de donn\IeC {\'e}e}{12}{subsection.4.1.2}
+\contentsline {subsection}{\numberline {4.1.3}L'initialisation de la population}{12}{subsection.4.1.3}
+\contentsline {section}{\numberline {4.2}Traitement des images et cr\IeC {\'e}ation de nos matrices}{13}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}pr\IeC {\'e}sentation des images}{13}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}Cr\IeC {\'e}ation du masque}{14}{subsection.4.2.2}
+\contentsline {subsection}{\numberline {4.2.3}Application du masque}{14}{subsection.4.2.3}
+\contentsline {subsection}{\numberline {4.2.4}Ajout des covariables}{14}{subsection.4.2.4}
+\contentsline {section}{\numberline {4.3}Le calcul de pr\IeC {\'e}diction}{15}{section.4.3}
+\contentsline {subsubsection}{Sensibilit\IeC {\'e} et sp\IeC {\'e}cificit\IeC {\'e}: explication}{15}{section*.16}
+\contentsline {chapter}{\numberline {5}chapitre\_5}{16}{chapter.5}
