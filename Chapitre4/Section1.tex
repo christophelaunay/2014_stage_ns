@@ -13,32 +13,32 @@ Les participants a ce projet ont été recruté dans trois sites différents :
 les sujets témoins ont été recrutés parmi des contrôles, des annonces médiatiques ou encore dans des bureaux d'enregistrement parmi les trois sites. Ils ont tous été soumis à des tests reconnus pour les troubles mentaux et non aucun membre de leur famille sujet a ces mêmes troubles. Un autre critère de sélection est qu'aucun des participants n'a subi de traumatisme neurologique, n'ai une contre indication pour l'IRM.
 
 
-\subsection{L'acquisition de donnée}
+\subsection{L'acquisition des données}
 
 Toute les données ont été acquises par le même logiciel d'acquisition avec une machine IRM 3T qui ont toutes été paramétrés de la même manière sur les 3 sites. Par la suite, les images ont été normalisés et corrigés si besoin à l'aide de logiciel libre.
 
 \todo{inclure un petit schéma concernant le prétraitement des données}
 
-\subsection{L'initialisation de la population} 
+\subsection{Création du fichier de la population} 
 
 Au commencement, nous avons 3 fichiers :
 \begin{itemize}
-	\item Le fichier qui contient les imageries de diffusion : \textit{all\_FA.nii.gz}
-	\item Un autre contenant les identifiants de chaque sujet qui correspondent aux images : \textit{ID.tbss}
-	\item Un dernier fichier qui correspond aux données cliniques de chaque sujet: \textit{BD\_clinic.xlsx} 
+	\item Le fichier qui contient les images de diffusion : \filename{all\_FA.nii.gz}
+	\item Un autre contenant les identifiants de chaque sujet qui correspondent aux images : \filename{ID.tbss}
+	\item Un dernier fichier qui correspond aux données cliniques de chaque sujet: \filename{BD\_clinic.xlsx} 
 \end{itemize}
 
-Avant tout, il faut s'assurer que les identifiants contenus dans le ID.tbss soient les mêmes que dans notre fichier clinique.
+Avant tout, il faut s'assurer que les identifiants contenus dans le \filename{ID.tbss} soient les mêmes que dans notre fichier clinique.
 Une fois cela fait, nous sélectionnons les données cliniques qui nous intéressent pour l'étude en question. C'est à dire les données suivantes : 
 \begin{itemize}
 	\item L'identifiant du sujet
-	\item l'état du patient : si il est bipolaire ou non
-	\item l'age auquel l'IRM a été effectué
-	\item le sex du sujet
-	\item le site dans lequel l'acquisition a été fait. 
+	\item l'état du patient: si il est bipolaire ou non
+	\item l'âge auquel l'IRM a été effectué
+	\item le sexe du sujet
+	\item le site dans lequel l'acquisition a été faite 
 \end{itemize}
 
-A la fin de toutes ces étapes, ces données sont enregistrés dans un nouveau fichier que nous appelons \textit{population.csv} que nous utiliserons tout du long du projet.
+À la fin de toutes ces étapes, ces données sont enregistrés dans un nouveau fichier que nous appelons \filename{population.csv} que nous utiliserons tout du long du projet.
 
 
-Une fois toutes ces données récupéré, les images seront traités. 
+Une fois toutes ces données récupérées, les images seront traitées. 

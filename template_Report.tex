@@ -1,10 +1,13 @@
 \documentclass[]{report}
 
 \usepackage[utf8x]{inputenc}
-\usepackage[french]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[frenchb]{babel}
 
 \usepackage{graphicx}
+
 \usepackage{todonotes}
+\usepackage{pdfcomment}
 
 \usepackage{hyperref}
 
@@ -13,6 +16,8 @@
 	Neurospin}
 \author{Christophe Launay, Promo 2015, M1, EFREI}
 
+\newcommand{\comment}[2]{\pdfcomment[author=#1]{#2}}
+\newcommand{\filename}[1]{\texttt{#1}}
 
 \begin{document}
 	

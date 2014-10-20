@@ -1,5 +1,6 @@
-\section{Traitement des images et création de nos matrices}
+\section{Traitement des images et création des matrices pour l'algorithme d'apprentissage}
 
+\comment{Mathieu}{Comme je l'ai dit les hypothèses peuvent être présentées plus haut. On peut virer les cas sans intercept (tu mentionnes que plusieurs autres pistes ont été explorées mais ne sont pas présentées car elles sont pourries).}
 Ici vous sera expliqué comment les données ont été traités informatiquement pour la suite de notre projet.
 Plusieurs hypothèses ont été évaluées : 
 \begin{enumerate}
@@ -10,7 +11,7 @@ Plusieurs hypothèses ont été évaluées :
 	\item un masque tronqué d'une partie du cerveau afin de focaliser notre analyse sur des régions précises du cerveau.  
 \end{enumerate}
 
-\subsection{présentation des images}
+\subsection{Présentation des images}
 
 A chaque sujet correspond une image de dimension (182, 218, 182). Ce sont donc des images 3D qui sont regroupés en un seul volume. Le fichier image correspond donc a un volume 4D qui correspond aux dimensions d'une image plus le nombre de sujet.
 
@@ -19,7 +20,7 @@ A chaque sujet correspond une image de dimension (182, 218, 182). Ce sont donc d
 \subsection{Création du masque}
 
 Chaque image fais environ deux millions de voxels (pixel du cerveau). Nous allons appliquer un masque afin de réduire le nombre de voxel et ainsi focaliser notre analyse sur une plus petite partie du cerveau. Cela nous permettra d'éliminer une grande partie des voxels qui ne nous intéressent pas. 
-Ce masque sera fait selon les images de base avec un certain seuil suivi d'un paufinage basé sur un atlas qui va nous permettre de sélectionner des régions du cerveau qui ne sont pas révélateurs dans notre cas. (voir figure 2)
+Ce masque sera fait selon les images de base avec un certain seuil suivi d'un peaufinage basé sur un atlas qui va nous permettre de sélectionner des régions du cerveau qui ne sont pas révélateurs dans notre cas. (voir figure 2)
 
 Dans le cas du masque tronqué, nous suivons les étapes du dessus, suivi d'élimination des zones du cerveau que nous ne voulons pas.
 
@@ -39,7 +40,8 @@ Suite à la création de cette matrice, nous y ajoutons des colonnes de covariab
 L'âge sera centrée et réduit mais pas le sexe qui sera codé en binaire (1, -1) ou le 1 correspond aux femmes et -1 les femmes. 
 Ces deux colonnes sont ensuite ajoutées a la matrice X. 
 
-Dans le cas de l'hypothèse 2, une colonne de 1 a été ajouté au tout début de la matrice.Il s'agit de la matrice d'intercept qui va diminuer l'effet de biais(équilibrage de la classification des sujets).
+Dans le cas de l'hypothèse 2, une colonne de 1 a été ajouté au tout début de la matrice.
+Il s'agit de la matrice d'intercept qui va diminuer l'effet de biais (équilibrage de la classification des sujets).
 
 Dans le cas de l'hypothèse 3, une covariable va être ajouté, celle des sites auxquelles a été prises l'IRM. Il s'agit de \textit{Dummy Coding}, c'est à dire transformé une colonne contenant plusieurs informations qualitatives en n colonnes, une pour chaque valeur différente. 
 

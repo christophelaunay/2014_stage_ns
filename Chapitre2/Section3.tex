@@ -1,14 +1,18 @@
 \section{Présentation du projet}
 
+\comment{Mathieu}{Cette partie n'est pas très claire. Je pense qu'il ne faut pas parler ici des échantillons d'apprentissage et de tests.
+                  En revanche, tu peux dire ce qui était présent au début du projet: données cliniques et images provenant de différents centres, avec les données
+                  des identifiants différents et un ordre différent.
+                  Ainsi, tu justifie la première partie du cahier des charges.
+                  De plus, tu peux dire qu'on utilise un modèle doté de nombreux paramètres et donc qu'on va devoir essayer beaucoup de combinaisons.
+                  Comme chaque évaluation est lourde (validation croisée), ça nécessite l'emploi d'un cluster et des logiciels développés à NS pour ça.
+                  Il faut aussi évoquer les différentes hypothèses (différents masques et images squeletissées).
+                  La partie 4 donne des détails qui peuvent être intéressants ici.
+                  Voir les remarques en section 4}
+Le projet consiste à étudier une population de 200 sujets dont une partie est atteinte de trouble bipolaire et l'autre est constitué de témoins.
+% Le but étant d'apprendre à la machine à reconnaître les sujets bipolaires des sains.
+Le principe est de créer deux groupes: un qui servira pour l'apprentissage et l'autre de test.
+À partir de l'échantillon d'apprentissage, l'algorithme estime une carte des poids des voxels (les pixels de l'image IRM)
+Grâce à cet apprentissage, on peut classer les sujets de l'échantillon de test et comparer ce résultat aux statuts cliniques.
 
-Le projet consiste à étudier une population de 200 sujets, une partie est atteinte de trouble bipolaire, l'autre est constitué de témoins. Le but étant d'apprendre a la machine à reconnaitre les sujets bipolaires des sains. 
-Le principe est de créer deux groupes de cette populations, un qui servira pour l'apprentissage de la machine, et l'autre de test (voir figure 1, a).
-Elle apprendra une carte des poids des voxels (les pixels de l'image IRM) selon le score (si oui ou non le sujet étudié est bipolaire) ainsi que des hyperplans de prédictions qui correspondent aux coordonnées dans l'espace des voxels de poids les plus forts (voir figure 1, b).
-grâce a cet apprentissage, la machine calculera sur l'échantillon de test un score de prédiction qui sera comparé aux vraies résultats cliniques des sujets (voir figure 1, c, d).
-Le sujet porte donc sur une classification des voxels. Pour celle-ci, un vecteur de poids via une régression logistique sera calculé qui va servir ensuite pour les prédictions afin de classés nos résultats grâce à une validation croisée.
-
-Ainsi, nous avons le plan d'ensemble du projet, procédons maintenant par étape en commençant par présenter le cahier des charges.
-
- 
-
- 
+Ainsi, nous avons le plan d'ensemble du projet, procédons maintenant par étapes en commençant par présenter le cahier des charges.

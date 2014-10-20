@@ -1,6 +1,9 @@
 \section{Validation Croisée}
 
-La validation croisée est une méthode d'évaluation qui consiste a moyenné les scores calculés sur plusieurs jeux de données pour un seul tuple de paramètre. (voir~\autoref{fig:Valid_Croisee})
+\comment{Mathieu}{Je pense qu'il faut inverser les 2 figures (le nom des fichiers n'est pas correct) car la figure 3.5 représente la validation croisée ``de base'' tandis que la
+                  3.4 représente la validation croisée avec recherche des paramètres.
+                  Il faut aussi retravailler le texte.}
+La validation croisée est une méthode d'évaluation qui consiste à moyenner les scores calculés sur plusieurs jeux de données pour un seul tuple de paramètre (voir~\autoref{fig:Valid_Croisee}).
 
 
 \begin{figure}[htpb]
@@ -11,10 +14,11 @@ La validation croisée est une méthode d'évaluation qui consiste a moyenné le
 \end{figure}
 
 
-Le principe de la validation croisée est de séparer un ensemble de donnée en plusieurs groupes de tailles équivalentes. Sur le schéma de la  \autoref{fig:Valid_Croisee_param}, on peut observer un ensemble de donné séparé en 3 avec $X_{1}$, $X_{2}$, $X_{3}$.
+Le principe de la validation croisée est de séparer un ensemble de données en plusieurs groupes de tailles équivalentes.
+Sur le schéma de la  \autoref{fig:Valid_Croisee_param}, on peut observer un ensemble de données séparé en 3 avec $X_{1}$, $X_{2}$, $X_{3}$.
 Chacun à tour de rôle sera utilisé pour l'apprentissage et le test. 
 Sur les deux schémas, on peut lire "score", cela représente le résultat estimé par la régression linéaire. C'est ce même score qui sera comparé aux vrais score pour savoir si notre estimation est correcte et les résultats prédits bons. 
-Il va sans dire que 
+Il va sans dire que \comment{Mathieu}{En effet, on ne va pas le dire ;)}
 
 \begin{figure}[htpb]
 	\centering
@@ -24,4 +28,5 @@ Il va sans dire que
 \end{figure}
 
 
-Toutes les méthodes décrites dans cette partie représente enormément de temps de calculs. Pour réduire ce temps la, le module MapReduce va être utilisé. 
+Toutes les méthodes décrites dans cette partie représente énormément de temps de calculs.
+Pour réduire ce temps la, le module MapReduce va être utilisé. 
