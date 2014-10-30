@@ -1,18 +1,42 @@
 \section{Présentation du projet}
 
-\comment{Mathieu}{Cette partie n'est pas très claire. Je pense qu'il ne faut pas parler ici des échantillons d'apprentissage et de tests.
-                  En revanche, tu peux dire ce qui était présent au début du projet: données cliniques et images provenant de différents centres, avec les données
-                  des identifiants différents et un ordre différent.
-                  Ainsi, tu justifie la première partie du cahier des charges.
-                  De plus, tu peux dire qu'on utilise un modèle doté de nombreux paramètres et donc qu'on va devoir essayer beaucoup de combinaisons.
-                  Comme chaque évaluation est lourde (validation croisée), ça nécessite l'emploi d'un cluster et des logiciels développés à NS pour ça.
-                  Il faut aussi évoquer les différentes hypothèses (différents masques et images squeletissées).
-                  La partie 4 donne des détails qui peuvent être intéressants ici.
-                  Voir les remarques en section 4}
-Le projet consiste à étudier une population de 200 sujets dont une partie est atteinte de trouble bipolaire et l'autre est constitué de témoins.
-% Le but étant d'apprendre à la machine à reconnaître les sujets bipolaires des sains.
-Le principe est de créer deux groupes: un qui servira pour l'apprentissage et l'autre de test.
-À partir de l'échantillon d'apprentissage, l'algorithme estime une carte des poids des voxels (les pixels de l'image IRM)
-Grâce à cet apprentissage, on peut classer les sujets de l'échantillon de test et comparer ce résultat aux statuts cliniques.
+% \comment{Mathieu}{Cette partie n'est pas très claire. Je pense qu'il ne faut pas parler ici des échantillons d'apprentissage et de tests.
+%                   En revanche, tu peux dire ce qui était présent au début du projet: données cliniques et images provenant de différents centres, avec les données
+%                   des identifiants différents et un ordre différent.
+%                   Ainsi, tu justifie la première partie du cahier des charges.
+%                   De plus, tu peux dire qu'on utilise un modèle doté de nombreux paramètres et donc qu'on va devoir essayer beaucoup de combinaisons.
+%                   Comme chaque évaluation est lourde (validation croisée), ça nécessite l'emploi d'un cluster et des logiciels développés à NS pour ça.
+%                   Il faut aussi évoquer les différentes hypothèses (différents masques et images squeletissées).
+%                   La partie 4 donne des détails qui peuvent être intéressants ici.
+%                   Voir les remarques en section 4}
 
-Ainsi, nous avons le plan d'ensemble du projet, procédons maintenant par étapes en commençant par présenter le cahier des charges.
+Afin d'étudier la maladie, une base de données contenant des patients atteints de bipolarité et des sujets sains (sujets contrôle) a été constituée
+en collaboration entre plusieurs hôpitaux en France, en Allemagne et aux États-Unis.
+Ces sites nous ont fourni les données cliniques de chaque sujet ainsi que leur IRM respectif.
+% Compte tenu du fait que les données proviennent de 3 sites différents, les identifiants des sujets ne correspondent pas toujours aux a ceux des images IRM ou bien l'ordre est différent ou bien il y a des données manquantes, etc... 
+% Suite à la résolution de ces différents problèmes, nous étudions ces données avec un modèle estimateur qui possède 5 hypers-paramètres (K, $\alpha$, l1, l2, tv). Chacun de ces paramètres possède plusieurs valeurs et chacune des combinaisons de ces 5 valeurs seront testées ce qui correspond a 2475 combinaisons. 
+
+Nous voulons évaluer un algorithme d'apprentissage développé à Neurospin.
+Cet algorithme possède de nombreux paramètres.
+Nous voulons donc trouver la meilleure combinaisons de ces paramètres.
+
+Comme nous avons beaucoup de combinaisons à tester et que la méthode d'évaluation est lourde,
+nous utiliserons un cluster et des logiciels développés par Neurospin afin de paralléliser l'évaluation.
+
+Nous voulons de plus tester plusieurs hypothèses scientifiques telles que:
+\begin{itemize}
+	\item l'influence d'autres variables telles que le sexe, l'âge ou le scanner IRM utilisé
+	\item la restriction a une partie du cerveau afin de focaliser notre analyse sur des régions précises du cerveau
+	\item l'utilisation de pré-traitement supplémentaire (squeletisation) sur les images
+\end{itemize}
+
+% Le sujet de ce programme repose sur différentes hypothèses : 
+% \begin{enumerate}
+% 	\item les images initiales et une matrice avec le sexe et l'age auquel l'image a été prise l'IRM sans intercept.
+% 	\item les images initiales avec une matrice au mêmes covariables avec l'intercept. 
+% 	\item les deux premières hypothèses mais avec des images squeletonisées.
+% 	\item Les images de bases avec une covariable en plus : les sites ont été rajoutés
+% 	\item un masque tronqué d'une partie du cerveau afin de focaliser notre analyse sur des régions précises du cerveau.  
+% \end{enumerate}
+% 
+% les hypothèses sans intercept et sans sites ne seront pas présentés dans ce rapport pour raison de résultat insatisfaisant. 

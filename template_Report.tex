@@ -1,7 +1,10 @@
-\documentclass[]{report}
+\documentclass[12pt]{report}
+
 
 \usepackage[utf8x]{inputenc}
 \usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage{eurosym}
 \usepackage[frenchb]{babel}
 
 \usepackage{graphicx}
@@ -10,7 +13,13 @@
 \usepackage{pdfcomment}
 
 \usepackage{hyperref}
-
+\usepackage[all]{hypcap}
+\hypersetup{
+    colorlinks,
+    linkcolor={red},
+    citecolor={blue!50!black},
+    urlcolor={blue!80!black}
+}
 % Title Page
 \title{Rapport de stage Technique:
 	Neurospin}
@@ -33,5 +42,6 @@
 \include{./Chapitre3/chapitre_3}
 \include{./Chapitre4/chapitre_4}
 \include{./Chapitre5/chapitre_5}
+\include{./Chapitre6/chapitre_6}
 
 \end{document}

@@ -1,6 +1,9 @@
 \section{Le calcul de prédiction}
 
-\todo{expliquer l'ordre dans lequel sont effecués les différentes étapes du calcul de prédiction (shéma maybe?)}
+
+En premier lieu, Le Mapper va distribuer les calculs avec la découpe de la population adéquate.
+Ensuite l'apprentissage statistique va s'executer avec la régression logistique afin de calculer les scores. 
+Une fois ces scores calculés, le Reducer va effectuer la validation croisée entre tous les scores pour obtenir nos prédictions finales, celles que nous analyserons plus tard. 
 
 \subsubsection{Sensibilité et spécificité: explication}
 
