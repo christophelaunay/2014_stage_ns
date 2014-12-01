@@ -1,0 +1,37 @@
+\section{Résultats de l'apprentissage selon l'hypothèse 1}
+
+Pour rappel, l'hypothèse numéro 1 correspond aux images non modifiées avec les covariables suivantes : 
+\begin{itemize}
+	\item Sexe
+	\item Age
+	\item Site
+\end{itemize}
+Les résultats se présentent sous la forme d'un tableau comprenant 21 colonnes. Par souci de présentation, la totalité des résultats ne sera pas affichée mais seulement les colonnes d'importance :
+\begin{itemize}
+\item Paramètres
+\item Sensibilité
+\item Spécificité
+\item Moyenne	
+\end{itemize}
+les 10 jeux de paramètres pour lesquels nous avons obtenus les résultats les plus probants sont rassemblés dans le tableau 1 : 
+
+\begin{tabular}{|l|l|l|c|r}
+	\hline
+	jeu & paramètres & Sensibilité & Spécificité & Moyenne \\
+	\hline
+	1 & (0.1, 0.039, 0.36, 0.601, 10000.0) & 0.616 & 0.657 & 0.636 \\
+	2 & (0.5, 0.007, 0.693, 0.304, 10000.0) & 0.651 & 0.620 & 0.636 \\
+	3 & (0.05, 0.039, 0.353, 0.601, 10000.0) & 0.616 & 0.648 & 0.632 \\
+	4 & (0.1, 0.008, 0.792, 0.2, 10000.0) &	0.616 & 0.648 &	0.632 \\
+	5 & (0.05, 0.03, 0.269, 0.701, 10000.0) & 0.651 & 0.616 & 0.631 \\
+	6 & (0.01, 0.009, 0.891, 0.1, 10000.0) & 0.558 & 0.704 & 0.631 \\
+	7 & (0.05, 0.399, 0.0, 0.601, 100000.0) & 0.558 & 0.704 & 0.631 \\
+	8 & (0.1, 0.007, 0.693, 0.304, 10000.0) & 0.639 & 0.620 & 0.629 \\
+	9 & (0.05, 0.001, 0.899, 0.1, 10000.0) & 0.546 & 0.713 & 0.629 \\
+	10 & (0.1, 0.009, 0.891, 0.1, 10000.0) & 0.546 & 0.713 & 0.629 \\
+	\hline
+	
+\end{tabular}
+\\
+La première colonne sont les hypers-paramètres avec lesquels nous avons effectué notre apprentissage. 
+Avec l'hypothèse 1, nous obtenons une moyenne de 63\% de sujets bien classés entre non malades et malades sans différence significative entre tous les jeux de paramètres. Cette absence de différence est dûe au fait que les paramètres donnant la plus grande spécificité (n°9 et 10) sont ceux qui donnent la plus faible sensibilité et inversement (n°2 et 5). D'où la nécessité d'envisager d'autres hypothèses. 

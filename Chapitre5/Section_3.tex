@@ -1,0 +1,30 @@
+\section{Résultats de l'apprentissage selon l'hypothèse 3}
+
+L'hypothèse 3 correspond à l'apprentissage sur des images squelétisées. Les covariables restent les mêmes que pour les hypothèses 1 et 2. Cette squeletisation permet un calcul plus rapide car nous prenons les voxels représentant le plus fidèlement possible les flux dans le cerveau sans pour autant prendre tous les voxels. 
+\\
+
+Les 10  jeux de paramètres pour lesquels nous obtenons les meilleurs résultats sont rassemblés dans le tableau 3 : 
+
+\begin{tabular}{|l|l|l|c|r}
+	\hline
+	jeu & paramètres & Sensibilité & Spécificité & Moyenne \\
+	\hline
+	1 & (0.01, 0.0, 0.95, 0.05, -1.0) & 0.767 & 0.564 & 0.666 \\
+	2 & (0.01, 0.0, 0.99, 0.01, -1.0) & 0.802 & 0.527 & 0.665 \\
+	3 & (0.01, 0.0, 0.999, 0.001, -1.0) & 0.883 & 0.425 & 0.654 \\
+	4 & (0.01, 0.0, 0.99, 0.01, 100000.0) & 0.779 & 0.527 & 0.653 \\
+	5 & (0.01, 0.0, 0.995, 0.005, 100000.0) & 0.813 & 0.490 & 0.652 \\
+	6 & (0.01, 0.00095, 0.94905, 0.05, -1.0) & 0.732 & 0.564 & 0.648 \\
+	7 & (0.01, 0.0, 0.995, 0.005, -1.0) & 0.813 & 0.481 & 0.647 \\
+	8 & (0.01, 0.00095, 0.94905, 0.05, 100000.0) & 0.720 & 0.574 & 0.647 \\
+	9 & (0.1, 0.0, 0.9, 0.1, -1.0) & 0.720 & 0.574 & 0.647 \\
+	10 & (0.01, 0.001, 0.998, 0.001, 100000.0) & 0.848 & 0.444 & 0.646 \\
+	\hline
+	
+\end{tabular}
+
+Ces résultats présentent les meilleurs moyennes taux de sensibilité (72\% à 88\%), mais aussi les pires taux de spécificité (42\% à 57\%). De ce fait, les moyennes se situent au même niveau (à plus ou moins 2\% prés) que dans les deux autres cas.
+
+\bigskip
+
+En conclusion, à l'issu de ce travail, il est possible de proposer aux cliniciens différentes approches selon les hypothèses et les jeux de paramètres que nous venons de définir. S'ils souhaitent une grande sensibilité (détecter le plus grand nombre de malade même s'il y a quelque "faux positifs") il faudra utiliser le jeu de paramètre n°3 avec l'hypothèse 3. Par contre si c'est la spécificité qui prime, il faut utiliser le jeu n°7 de l'hypothèse 2 ou les jeux n°9 et n°10 de l'hypothèse 1.
