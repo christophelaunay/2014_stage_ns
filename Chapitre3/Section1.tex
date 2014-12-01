@@ -37,13 +37,6 @@ On sélectionne les k meilleurs.
 % 
 % En nous basant sur cette formule, il est facile après d'isoler les $\beta_{i}$ et de les calculés. 
 
-
-
-
-\subsubsection{Régression Logistique}
-
-Une fois nos paramètres estimés, il faut que le Y calculé soit entre 0 ou 1. Or, les résultats donnés par la régression linéaire sont définis sur l'ensemble des réels. On applique donc une fonction logistique afin de classé les résultats. 
-Cette fonction nous sert également a parer le problème du sur-apprentissage qui peut diminuer les performances de notre algorithme et faussé les résultats. 
-
-\todo{expliquer le but du choix de ce modele ci ( voir classif envoyé par edouard)}
-\todo{Expliquer aussi la pénalité ds la régression linéaire}
+Une fois nos paramètres estimés, il faut que le Y calculé soit entre 0 et 1. Or, les résultats donnés par la régression linéaire sont définis sur l'ensemble des réels. On applique donc une fonction logistique afin de classés les résultats. 
+Ce modèle nous assure un bon ratio des résultats d'apprentissage et de test. Ainsi, nous évitons le problème de sur-apprentissage. 
+Ce modèle repose sur des "pénalités". Ces pénalités sont ce que l'on peut appeler des contraintes de parcimonies qui consiste à ce que l'algorithme d'apprentissage apprenne en utilisant le moins de variables descriptives possibles. Ces contraintes permettent à l'algorithme d'éviter de rentrer en sur-apprentissage et aussi de mieux classés les voxels afin d'obtenir une meilleure classification.

@@ -1,46 +1,81 @@
 \section{Traitement des images et création des matrices pour l'algorithme d'apprentissage}
 
-\comment{Mathieu}{Comme je l'ai dit les hypothèses peuvent être présentées plus haut. On peut virer les cas sans intercept (tu mentionnes que plusieurs autres pistes ont été explorées mais ne sont pas présentées car elles sont pourries).}
-
 \subsection{Présentation des images}
 
-A chaque sujet correspond une image de dimension (182, 218, 182). Ce sont donc des images 3D qui sont regroupés en un seul volume. Le fichier image correspond donc a un volume 4D qui correspond aux dimensions d'une image plus le nombre de sujet.
+A chaque sujet correspond une image de dimension (182, 218, 182). Ce sont donc des images 3D qui sont regroupées en un seul volume. Le fichier image correspond donc a un volume 4D qui correspond aux dimensions d'une image plus le nombre de sujets.
 
-\todo{inclure des images d'une imagerie de diffusion + skeletonised}
-\todo{expliquer le but du masque dans le cas du traitement des images}
+
+\begin{figure}[htpb]
+	\centering
+	\includegraphics[scale = 0.5]{images/example_dwi}
+	\caption{IRM de diffusion.}
+	\label{fig:IRM}
+\end{figure}
+
+\begin{figure}[htpb]
+	\centering
+	\includegraphics[scale = 0.5]{images/example_dwi_skel}
+	\caption{IRM de diffusion squeletisé.}
+	\label{fig:IRM_skel}
+\end{figure}
+
+
 \subsection{Création du masque}
 
-Chaque image fais environ deux millions de voxels (pixel du cerveau). Nous allons appliquer un masque afin de réduire le nombre de voxel et ainsi focaliser notre analyse sur une plus petite partie du cerveau. Cela nous permettra d'éliminer une grande partie des voxels qui ne nous intéressent pas. 
-Ce masque sera fait selon les images de base avec un certain seuil suivi d'un peaufinage basé sur un atlas qui va nous permettre de sélectionner des régions du cerveau qui ne sont pas révélateurs dans notre cas. (voir figure 2)
+Chaque image fait environ deux millions de voxels (pixel du cerveau). Nous allons appliquer un masque afin de réduire le nombre de voxel et ainsi focaliser notre analyse sur une plus petite partie du cerveau. Cela nous permettra d'éliminer une grande partie des voxels qui ne nous intéressent pas. 
+Ce masque (voir~\autoref{fig:masque}) sera réalisé selon les images de base avec un certain seuil suivi d'un peaufinage basé sur un atlas qui va nous permettre de sélectionner des régions du cerveau qui ne sont pas révélatrices dans notre cas. 
 
-Dans le cas du masque tronqué, nous suivons les étapes du dessus, suivi d'élimination des zones du cerveau que nous ne voulons pas.
+Dans le cas des images squeletonisés(voir~\autoref{fig:masque squelétisé}), nous créons le masque sur la base de ces images. 
 
-Dans le cas des images skeletonisés, nous créons le masque sur la base de ces images. 
+Dans le cas du masque tronqué (voir~\autoref{fig:mask tronqué}), nous suivons les mêmes étapes ci-dessus, suivi de l'élimination des zones du cerveau non informative (l'arrière du cerveau).
 
-\todo{inclure des images du masque, troncés et skeletonised}
+
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale = 0.5]{images/mask}
+	\caption{Masque sans modification.}
+	\label{fig:masque}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale = 0.5]{images/mask_skel}
+	\caption{Masque réalisé à partir des images squelétisées.}
+	\label{fig:masque squelétisé}
+\end{figure}
+  	
+\begin{figure}[t]
+	\centering
+	\includegraphics[scale = 0.5]{images/mask_trunk}
+	\caption{Masque tronqué.}
+	\label{fig:mask tronqué}
+\end{figure}
+
 
 \subsection{Application du masque}
 
-Chaque image 3D sera transformé en un vecteur ligne. Celui-ci, que nous appellerons \textit{vecteur d'image} se verra appliqué le masque crée plutôt après avoir été transformé en vecteur ligne. Ainsi, nous obtenons une matrice X de vecteur ou chaque ligne correspond un sujet et le nombre de colonne aux voxels.
-Cette matrice sera ensuite centrée et réduite afin d'être normalisé. 
-Cette démarche est commune a toutes les hypothèses. 
+Chaque image 3D sera transformée en un vecteur ligne. Celui-ci, que nous appellerons \textit{vecteur d'image} se verra appliqué le masque créé plutôt après avoir été transformé en vecteur ligne. Ainsi, nous obtenons une matrice X de vecteurs où chaque ligne correspond à un sujet où le nombre de colonne correspond aux voxels.
+Cette matrice sera ensuite centrée et réduite afin d'être normalisée. 
+Cette démarche est commune à toutes les hypothèses. 
 
 \subsection{Ajout des covariables}
 
-Suite à la création de cette matrice, nous y ajoutons des colonnes de covariables. Ces variables sont des données cliniques qui ne seront pas pénalisés lors du calcul de prédiction. Les covariables sont le sexe des sujets et leur âge à auquel a été pris l'image. 
-L'âge sera centrée et réduit mais pas le sexe qui sera codé en binaire (1, -1) ou le 1 correspond aux femmes et -1 les femmes. 
+Suite à la création de cette matrice, nous ajoutons des colonnes de covariables. Ces covariables sont des données cliniques qui ne seront pas pénalisées lors du calcul de prédiction. Les covariables sont le sexe des sujets et leur âge auquel a été pris l'image. 
+L'âge sera centré et réduit mais pas le sexe qui sera codé en binaire (1, -1) ou le 1 correspond aux femmes et -1 les hommes. 
 Ces deux colonnes sont ensuite ajoutées a la matrice X. 
+Une dernière colonne est ajoutée, celle de l'intercept qui a pour but de diminuer l'effet biaisé (équilibrage de la classification des sujets)
 
-Dans le cas de l'hypothèse 2, une colonne de 1 a été ajouté au tout début de la matrice.
+Dans le cas de l'hypothèse 2, une colonne de 1 a été ajoutée au tout début de la matrice.
 Il s'agit de la matrice d'intercept qui va diminuer l'effet de biais (équilibrage de la classification des sujets).
 
-Dans le cas de l'hypothèse 3, une covariable va être ajouté, celle des sites auxquelles a été prises l'IRM. Il s'agit de \textit{Dummy Coding}, c'est à dire transformé une colonne contenant plusieurs informations qualitatives en n colonnes, une pour chaque valeur différente. 
+Dans le cas de l'hypothèse 3, une covariable va être ajoutée, celle des sites où a été prise l'IRM. Il s'agit du \textit{Dummy Coding}, c'est à dire transformée une colonne contenant plusieurs informations qualitatives en n colonnes, une pour chaque valeur différente. 
 
-Une autre matrice est crée, celle des Y qui correspond a l'état clinique des sujets (sain ou malade). Cette matrice est commune a toutes les hypothèses. 
+Une autre matrice est créée, celle des Y qui correspond à l'état clinique des sujets (sain ou malade). Cette matrice est commune a toutes les hypothèses. 
 
-Ces deux matrices seront enregistrées dans deux fichiers différents et seront utilisés lors du calcul d'apprentissage et de prédiction.
+Ces deux matrices seront enregistrées dans deux fichiers différents et seront utilisées lors du calcul d'apprentissage et de prédiction.
 
 
-Suite cela, nous lançons les calculs de prédiction sur un cluster. 
+Suite à cela, nous lançons les calculs de prédiction sur un cluster. 
 
 

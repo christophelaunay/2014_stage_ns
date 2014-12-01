@@ -1,7 +1,7 @@
 \section{MapReduce}
 
-MapReduce est un modèle d'architecture de développement informatique, inventé par Google, utilisé pour effectuer des calculs parallèles, et souvent distribués, de données potentiellement très volumineuses.
-Ce modèle consiste en deux étapes :
+MapReduce est un modèle d'architecture de développement informatique, inventé par Google, utilisé pour effectuer des calculs parallèles de données potentiellement très volumineuses.
+Ce modèle comprend deux étapes :
 \begin{itemize}
 	\item map
 	\item reduce
@@ -9,23 +9,23 @@ Ce modèle consiste en deux étapes :
 
 \subsubsection{Map}
 
-Dans l'étape Map le nœud analyse un problème, le découpe en sous-problèmes, et les délègue à d'autres nœuds (qui peuvent en faire de même récursivement).
+Dans l'étape Map le nœud (voir~\autoref{fig:MapReduce}) analyse un problème, le découpe en sous-problèmes qu'il délègue à d'autres nœuds (qui peuvent en faire de même récursivement).
 Les sous-problèmes sont ensuite traités par les différents nœuds à l'aide de la fonction Map qui à un couple (clé, valeur) associe un ensemble de nouveaux couples (clé, valeur):
+
 \begin{equation}
 map(key1,value1) → list(key2,value2)
 \end{equation}
 
 \subsubsection{Reduce}
 
-Dans l'étape Reduce, où les nœuds les plus bas font remonter leurs résultats au nœud parent qui les avait sollicités.
-Celui-ci calcule un résultat partiel à l'aide de la fonction Reduce (réduction) qui associe toutes les valeurs correspondantes à la même clé à une unique paire (clé, valeur).
+Dans l'étape Reduce, les nœuds (voir~\autoref{fig:MapReduce}) les plus bas font remonter leurs résultats au nœud parent qui les avait sollicités.
+Celui-ci calcule un résultat partiel à l'aide de la fonction Reduce (réduction) qui associe à une unique paire (clé, valeur) toutes les valeurs correspondantes à la même clé .
 Puis il remonte l'information à son tour.
 À la fin du processus, le nœud d'origine peut recomposer une réponse au problème qui lui avait été soumis :
+
 \begin{equation}
 reduce(key2,list(value2))→ list(value2)
 \end{equation}
-
-
 
 \begin{figure}[htpb]
 	\centering
