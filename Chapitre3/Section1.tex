@@ -1,14 +1,20 @@
 \section{Modèle}
 
-Notre estimateur consiste à effectuer une régression logistique afin de trouver le vecteur de poids $\beta$ (ici, $\beta$ = $\theta$).
-Dans un premier temps, une régression linéaire est effectuée et par dessus celle-ci, une fonction logistique est appliquée afin de classer les résultats à 0 ou 1. 
+Le modèle que nous avons utilisé comporte 2 étapes:
+\begin{enumerate}
+ \item sélection des voxels les plus informatifs réalisée par un filtre univarié: voir~\autoref{subsec:filtre_univarie}
+ \item classification à l'aide d'une régression logistique pénalisée: voir~\autoref{subsec:regression}
+\end{enumerate}
 
-\subsection{Filtre univarié}
+Comme le modèle utilise une régression linéaire, un poids $\beta_i$ est associé à chaque voxel.
+On peut donc obtenir une image des poids associé à chaque voxel (appelée carte des poids) qui permet de repérer des zones intervenant dans la classification, ce qui peut permettre de comprendre les processus biologiques à l'œuvre dans la maladie.
+
+\subsection{Filtre univarié} \label{subsec:filtre_univarie}
 
 On fait un test F de Fisher sur chaque voxel pour savoir si il prédit bien le statut clinique.
-On sélectionne les k meilleurs.
+On sélectionne les $k$ meilleurs.
 
-\subsection{Régression Logistique}
+\subsection{Régression logistique pénalisée}  \label{subsec:regression}
 
 % La régression linéaire consiste à calculer une droite qui passe au plus près de toutes les données en minimisant l'erreur.
 % Cette erreur est représenté par la distance des données à la droite (la ligne verte sur le graphique)  (voir~\autoref{fig:regression_lineaire})
@@ -37,6 +43,27 @@ On sélectionne les k meilleurs.
 % 
 % En nous basant sur cette formule, il est facile après d'isoler les $\beta_{i}$ et de les calculés. 
 
-Une fois les paramètres estimés, il faut que le Y calculé soit entre 0 et 1. Or, les résultats donnés par la régression linéaire sont définis sur l'ensemble des réels. On applique donc une fonction logistique afin de classer les résultats. 
-Ce modèle nous assure un bon ratio des résultats d'apprentissage et de test. Ainsi, nous évitons le problème de sur-apprentissage. 
-Ce modèle repose sur des "pénalités". Ces pénalités sont ce que l'on peut appeler des contraintes de parcimonies qui consiste à ce que l'algorithme d'apprentissage apprenne en utilisant le moins de variables descriptives possibles. Ces contraintes permettent à l'algorithme d'éviter de rentrer en sur-apprentissage et aussi de mieux classés les voxels afin d'obtenir une meilleure classification.
+%Notre estimateur consiste à effectuer une régression logistique afin de trouver le vecteur de poids $\beta$ (ici, $\beta$ = $\theta$).
+Dans un premier temps, une régression linéaire est effectuée et par dessus celle-ci, une fonction logistique est appliquée afin d'obtenir une classification binaire.
+
+Afin d'éviter le problème de sur-apprentissage, ce modèle inclut 3 pénalités:
+\begin{itemize}
+ \item une pénalité sur la norme $\ell_1$ qui assure que peu de variables sont sélectionnées
+ \item une pénalité sur la norme $\ell_2$ qui assure que les poids sont relativement faibles
+ \item une pénalité sur la norme TV qui assure la continuité spatiale des poids  
+\end{itemize}
+
+La force de la pénalité est réglée par un hyper-paramètre.
+En général, on fixe une pénalité globale $\alpha$ et des ratios $\alpha_{\ell_1}$, $\alpha_{\ell_2}$ et $\alpha_{TV}$ tels que:
+\[
+\alpha_{\ell_1} + \alpha_{\ell_2} + \alpha_{TV} = \alpha
+\]
+
+\subsection{Hyper-paramètres}
+
+Le modèle a donc 4 hyper-paramètres:
+\begin{enumerate}
+ \item le nombre de voxels sélectionnés par le filtre univarié $k$
+ \item la pénalité globale $\alpha$
+ \item les ratio $\alpha_{TV}$ et $\alpha_{\ell_1}$ ($\alpha_{\ell_2}$ se déduisant automatiquement)
+\end{enumerate}

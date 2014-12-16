@@ -2,8 +2,9 @@
 
 \subsection{Présentation des images}
 
-A chaque sujet correspond une image de dimension (182, 218, 182). Ce sont donc des images 3D qui sont regroupées en un seul volume. Le fichier image correspond donc a un volume 4D qui correspond aux dimensions d'une image plus le nombre de sujets.
-
+À chaque sujet correspond une image de dimension (182, 218, 182) (voir~\autoref{fig:IRM}).
+Les images sont regroupées en un seul fichier qui correspond donc à un volume 4D (3 dimensions d'une image plus une dimension pour les sujets).
+En plus de ces images, on peut utiliser une étape supplémentaire de traitement appelée squelettisation (voir~\autoref{fig:IRM_skel}) qui permet de réduire les images à un ensemble de courbes.
 
 \begin{figure}[htpb]
 	\centering
@@ -15,19 +16,19 @@ A chaque sujet correspond une image de dimension (182, 218, 182). Ce sont donc d
 \begin{figure}[htpb]
 	\centering
 	\includegraphics[scale = 0.5]{images/example_dwi_skel}
-	\caption{IRM de diffusion squeletisé.}
+	\caption{IRM de diffusion squelettisé.}
 	\label{fig:IRM_skel}
 \end{figure}
 
 
 \subsection{Création du masque}
 
-Chaque image fait environ deux millions de voxels (pixel du cerveau). Nous allons appliquer un masque afin de réduire le nombre de voxel et ainsi focaliser notre analyse sur une plus petite partie du cerveau. Cela nous permettra d'éliminer une grande partie des voxels qui ne nous intéressent pas. 
+Chaque image fait environ deux millions de voxels. Nous allons appliquer un masque afin de réduire le nombre de voxel et ainsi focaliser notre analyse sur une plus petite partie du cerveau. Cela nous permettra d'éliminer une grande partie des voxels qui ne nous intéressent pas. 
 Ce masque (voir~\autoref{fig:masque}) sera réalisé selon les images de base avec un certain seuil suivi d'un peaufinage basé sur un atlas qui va nous permettre de sélectionner des régions du cerveau qui ne sont pas révélatrices dans notre cas. 
 
-Dans le cas des images squeletonisés(voir~\autoref{fig:masque squelétisé}), nous créons le masque sur la base de ces images. 
+Dans le cas des images squelettisées (voir~\autoref{fig:masque squelétisé}), nous créons le masque sur la base de ces images. 
 
-Dans le cas du masque tronqué (voir~\autoref{fig:mask tronqué}), nous suivons les mêmes étapes ci-dessus, suivi de l'élimination des zones du cerveau non informative (l'arrière du cerveau).
+Dans le cas du masque tronqué (voir~\autoref{fig:mask tronqué}), nous suivons les mêmes étapes ci-dessus, suivi de l'élimination des zones du cerveau non-informatives (l'arrière du cerveau).
 
 
 
@@ -55,7 +56,12 @@ Dans le cas du masque tronqué (voir~\autoref{fig:mask tronqué}), nous suivons 
 
 \subsection{Application du masque}
 
-Chaque image 3D sera transformée en un vecteur ligne. Celui-ci, que nous appellerons \textit{vecteur d'image} se verra appliqué le masque créé plutôt après avoir été transformé en vecteur ligne. Ainsi, nous obtenons une matrice X de vecteurs où chaque ligne correspond à un sujet où le nombre de colonne correspond aux voxels.
+Chaque image 3D est transformée en un vecteur ligne appelé \textit{vecteur d'image}.
+De même, le masque est transformé en vecteur ligne.
+Ce masque est utilisé pour sélectionner des éléments du vecteur.
+
+Ainsi, nous obtenons une matrice de vecteurs où chaque ligne correspond à un sujet où le nombre de colonne correspond au nombre de voxels du masque.
+
 Cette matrice sera ensuite centrée et réduite afin d'être normalisée. 
 Cette démarche est commune à toutes les hypothèses. 
 
@@ -64,10 +70,7 @@ Cette démarche est commune à toutes les hypothèses.
 Suite à la création de cette matrice, nous ajoutons des colonnes de covariables. Ces covariables sont des données cliniques qui ne seront pas pénalisées lors du calcul de prédiction. Les covariables sont le sexe des sujets et leur âge auquel a été pris l'image. 
 L'âge sera centré et réduit mais pas le sexe qui sera codé en binaire (1, -1) ou le 1 correspond aux femmes et -1 les hommes. 
 Ces deux colonnes sont ensuite ajoutées a la matrice X. 
-Une dernière colonne est ajoutée, celle de l'intercept qui a pour but de diminuer l'effet biaisé (équilibrage de la classification des sujets)
-
-Dans le cas de l'hypothèse 2, une colonne de 1 a été ajoutée au tout début de la matrice.
-Il s'agit de la matrice d'intercept qui va diminuer l'effet de biais (équilibrage de la classification des sujets).
+Une dernière colonne est ajoutée, qui joue le rôle de l'ordonnée à l'origine et qui a pour but de diminuer l'effet biaisé (équilibrage de la classification des sujets)
 
 Dans le cas de l'hypothèse 3, une covariable va être ajoutée, celle des sites où a été prise l'IRM. Il s'agit du \textit{Dummy Coding}, c'est à dire transformée une colonne contenant plusieurs informations qualitatives en n colonnes, une pour chaque valeur différente. 
 

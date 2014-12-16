@@ -1,14 +1,14 @@
 \section{Le calcul de prédiction}
 
 
-En premier lieu, Le Mapper va distribuer les calculs avec la découpe de la population adéquate.
+En premier lieu, le Mapper va distribuer les calculs avec la découpe de la population adéquate.
 Ensuite l'apprentissage statistique va s'exécuter avec la régression logistique afin de calculer les scores. 
 Une fois ces scores calculés, le Reducer va effectuer la validation croisée entre tous les scores pour obtenir nos prédictions finales, celles que nous analyserons plus tard. 
 
 \subsubsection{Sensibilité et spécificité: explication}
 
-Ci-dessus, on a mentionné la sensibilité et la spécificité. mots d'une grande importance qui doivent être explicités afin de bien comprendre les résultats qui seront présenté ensuite. 
-Ces termes viennent d'une technique d'analyse statistique : \textit{Receiver Operating Characteristic curve}. Cette technique  permet de classée des résultats binaires (0 ou 1) en quatre groupes sous-jacent : 
+Ci-dessus, on a mentionné la sensibilité et la spécificité, mots d'une grande importance qui doivent être explicités afin de bien comprendre les résultats qui seront présenté ensuite. 
+Ces termes viennent d'une technique d'analyse statistique : \textit{Receiver Operating Characteristic curve}. Cette technique  permet de classer des résultats binaires (0 ou 1) en quatre groupes: 
 \begin{itemize}
 	\item vrai positif
 	\item faux positif

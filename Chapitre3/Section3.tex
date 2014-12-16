@@ -1,6 +1,8 @@
 \section{MapReduce}
 
-MapReduce est un modèle d'architecture de développement informatique, inventé par Google, utilisé pour effectuer des calculs parallèles de données potentiellement très volumineuses.
+\subsection{Présentation générale}
+
+MapReduce est un modèle d'architecture de développement informatique, proposé par Google, utilisé pour effectuer des calculs parallèles sur des données potentiellement très volumineuses.
 Ce modèle comprend deux étapes :
 \begin{itemize}
 	\item map
@@ -34,6 +36,9 @@ reduce(key2,list(value2))→ list(value2)
 	\label{fig:MapReduce}
 \end{figure}
 
+\subsection{Implémentation utilisée}
+
+Dans notre cas, nous utilisons une implémentation de MapReduce réalisée à NeuroSpin.
 
 Dans notre cas, l'étape Map ne découpe pas nos données en plusieurs groupes, cependant elle appelle plusieurs fois la fonction de calcul des prédictions sur plusieurs clés de paramètres différents tous indépendants les uns des autres. C'est pourquoi MapReduce est utilisé afin de lancer les calculs (qui sont importants et qui prennent du temps) en parallèle sur le cluster. 
 

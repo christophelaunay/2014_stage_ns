@@ -1,23 +1,23 @@
 \section{Les sujets}
 
-Cette étape va concerner l'initialisation de nos sujets. Comment ils ont été choisi, quels sont les spécificités, etc...
+Cette étape va concerner l'initialisation de nos sujets. Comment ils ont été choisi, quels sont les spécificités, etc.
 
 \subsection{Le choix des participants}
 
-Les participants a ce projet ont été recruté dans trois sites différents : 
+Les participants au projet ont été recruté dans trois sites différents : 
 \begin{itemize}
 	\item Assistance Publique-Hôpitaux de Paris Hôpital Henri Mondor-Albert Chenevier à Créteil, Fernand Widal-Lariboisière à Paris, France
 	\item Western Psychiatric Institute and Clinic in Pittsburgh, Pennsylvania
 	\item Central Institute for Mental Health in Mannheim, Germany, une fondation publique associée a l'université de Heidelberg.
 \end{itemize}
-les sujets témoins ont été recrutés parmi des contrôles à la suite d'annonces médiatiques ou encore dans des bureaux d'enregistrement parmi les trois sites. Ils ont tous été soumis à des tests reconnus pour les troubles mentaux et n'ont aucun membre de leur famille sujet à ces mêmes troubles. Un autre critère de sélection est qu'aucun des participants n'a subi de traumatisme neurologique ni n'ai de contre indication pour l'IRM.
+Les sujets témoins ont été recrutés parmi des contrôles à la suite d'annonces médiatiques ou encore dans des bureaux d'enregistrement parmi les trois sites. Ils ont tous été soumis à des tests reconnus pour les troubles mentaux et n'ont aucun membre de leur famille sujet à ces mêmes troubles. Un autre critère de sélection est qu'aucun des participants n'a subi de traumatisme neurologique ni n'a de contre-indication pour l'IRM.
 
 
 \subsection{L'acquisition des données}
 
 Toute les données ont été acquises à l'aide du même logiciel d'acquisition avec des machines IRM 3T qui ont toutes été paramétrées de la même manière sur les 3 sites. Par la suite, les images ont été normalisées et corrigées si besoin à l'aide de logiciels libres.
 
-\subsection{Création du fichier de la population} 
+\subsection{Création du fichier de population} 
 
 Au commencement, nous avons 3 fichiers :
 \begin{itemize}
@@ -29,7 +29,7 @@ Au commencement, nous avons 3 fichiers :
 Avant tout, il faut s'assurer que les identifiants contenus dans le \filename{ID.tbss} soient les mêmes que dans notre fichier clinique.
 Quelques problèmes cependant ont été révélés lors de la construction de cette population. Notamment le fait que les identifiants contenus dans \filename{ID.tbss} étaient différent et pas dans le même ordre que dans le fichier \filename{BD\_clinic.xlsx}.
 D'où le besoin de créer une nouvelle population qui soit ordonnée et correcte. 
-Une fois cela fait, nous sélectionnons les données cliniques qui nous intéressent pour l'étude en question. C'est à dire les données suivantes : 
+Une fois cela fait, nous sélectionnons les données cliniques qui nous intéressent pour l'étude:
 \begin{itemize}
 	\item L'identifiant du sujet
 	\item l'état du patient: si il est bipolaire ou non (selon la clinique)
@@ -39,6 +39,3 @@ Une fois cela fait, nous sélectionnons les données cliniques qui nous intéres
 \end{itemize}
 
 À la fin de toutes ces étapes, ces données sont enregistrées dans un nouveau fichier que nous appelons \filename{population.csv} et que nous utiliserons tout du long du projet.
-
-
-Une fois toutes ces données récupérées, les images seront traitées. 
